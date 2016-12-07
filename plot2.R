@@ -6,6 +6,9 @@ data$Date<- as.Date(data$Date,format= "%d/%m/%Y")
 #subsetting the data from the dates 2007-02-01 and 2007-02-02.
 data<- data[(data[[1]] >= "2007-02-01" & data[[1]] <= "2007-02-02"),]
 
+# removing all the rows in which NA are present
+data<- data[complete.cases(data),]
+
 library(tidyr)
 #combine Date and Time column of data
 tidydata<- unite(data, date_time, Date, Time, sep=" ")
