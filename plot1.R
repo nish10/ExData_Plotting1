@@ -6,6 +6,9 @@ data$Date<- as.Date(data$Date,format= "%d/%m/%Y")
 #subsetting the data from the dates 2007-02-01 and 2007-02-02.
 data<- data[(data[[1]] >= "2007-02-01" & data[[1]] <= "2007-02-02"),]
 
+# removing all the rows in which NA are present
+data<- data[complete.cases(data),]
+
 # histogram of Global Active Power
 png("plot1.png")
 hist(subset_data$Global_active_power, xlab= "Global Active Power (kilowatts)", ylab="Frequency", 
